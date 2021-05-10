@@ -8,4 +8,8 @@ public class LoginDataNotFoundException extends Exception {
     public LoginDataNotFoundException(Long id) {
         super(String.format("Login data with %s not found!", id));
     }
+
+    public LoginDataNotFoundException(String name) {
+        super(String.format("Login data with %s not found!", name));
+    }
 }

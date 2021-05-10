@@ -38,7 +38,7 @@ public class LoginService {
 
         ServiceInfo savedService = (ServiceInfo) loginRepository.save(serviceInfo);
 
-        MessageResponseDTO messageResponseDTO = createMessageResponse("Login data successful created with ID: ", savedService.getId());
+        MessageResponseDTO messageResponseDTO = createMessageResponse("Login data successfully created with ID: ", savedService.getId());
 
         return  messageResponseDTO;
 
@@ -57,6 +57,13 @@ public class LoginService {
                 .orElseThrow(() -> new LoginDataNotFoundException(id));
 
         return loginMapper.toDTO(serviceInfo);
+    }
+
+    public void deleteById(Long id) throws LoginDataNotFoundException {
+        loginRepository.findById(id)
+        .orElseThrow(() -> new LoginDataNotFoundException(id));
+
+        loginRepository.deleteById(id);
     }
 
     private MessageResponseDTO createMessageResponse(String s, Long id) {
