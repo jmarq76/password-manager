@@ -66,6 +66,18 @@ public class LoginService {
         loginRepository.deleteById(id);
     }
 
+    public MessageResponseDTO updateById(Long id, ServiceInfoDTO serviceInfoDTO) throws LoginDataNotFoundException {
+        loginRepository.findById(id)
+                .orElseThrow(() -> new LoginDataNotFoundException(id));
+
+        ServiceInfo serviceInfo = loginMapper.toModel(serviceInfoDTO);
+        ServiceInfo savedService = loginRepository.save(serviceInfo);
+
+        MessageResponseDTO messageResponseDTO = createMessageResponse("Service successfully updated with ID: ", savedService.getId());
+
+        return messageResponseDTO;
+    }
+
     private MessageResponseDTO createMessageResponse(String s, Long id) {
 
         return MessageResponseDTO
