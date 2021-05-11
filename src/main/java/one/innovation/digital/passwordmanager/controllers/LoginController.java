@@ -6,6 +6,7 @@ import one.innovation.digital.passwordmanager.dto.request.ServiceInfoDTO;
 import one.innovation.digital.passwordmanager.dto.response.MessageResponseDTO;
 import one.innovation.digital.passwordmanager.entities.ServiceInfo;
 import one.innovation.digital.passwordmanager.exception.LoginDataNotFoundException;
+import one.innovation.digital.passwordmanager.generators.PasswordGenerator;
 import one.innovation.digital.passwordmanager.services.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,6 +49,11 @@ public class LoginController {
     @ResponseStatus(HttpStatus.OK)
     public MessageResponseDTO updateById(@PathVariable Long id, @RequestBody @Valid ServiceInfoDTO serviceInfoDTO) throws LoginDataNotFoundException {
         return loginService.updateById(id, serviceInfoDTO);
+    }
+
+    @GetMapping("/generate-password")
+    public MessageResponseDTO generateNewPassword(@RequestBody PasswordGenerator passwordGenerator){
+        return  loginService.generateNewPassword(passwordGenerator);
     }
 
 }

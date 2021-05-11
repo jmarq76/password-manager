@@ -6,6 +6,7 @@ import one.innovation.digital.passwordmanager.dto.request.ServiceInfoDTO;
 import one.innovation.digital.passwordmanager.dto.response.MessageResponseDTO;
 import one.innovation.digital.passwordmanager.entities.ServiceInfo;
 import one.innovation.digital.passwordmanager.exception.LoginDataNotFoundException;
+import one.innovation.digital.passwordmanager.generators.PasswordGenerator;
 import one.innovation.digital.passwordmanager.repositories.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -76,6 +77,14 @@ public class LoginService {
         MessageResponseDTO messageResponseDTO = createMessageResponse("Service successfully updated with ID: ", savedService.getId());
 
         return messageResponseDTO;
+    }
+
+    public MessageResponseDTO generateNewPassword(PasswordGenerator passwordGenerator){
+
+        return  MessageResponseDTO
+                .builder()
+                .message("New password successfully created: " + passwordGenerator.passGen())
+                .build();
     }
 
     private MessageResponseDTO createMessageResponse(String s, Long id) {
