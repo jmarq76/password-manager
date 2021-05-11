@@ -2,7 +2,9 @@
 
 
 
-Foi desenvolvida uma API para gerenciamento de Senhas e Logins com a implementação de um gerador aletório de senhas, baseado no projeto: Desenvolvendo um sistema de gerenciamento de pessoas em API REST com Spring Boot , da [Digital Innovation One] (https://digitalinnovation.one/).
+Foi desenvolvida uma API para gerenciamento de Senhas e Logins com a implementação de um gerador aletório de senhas, baseado no projeto: Desenvolvendo um sistema de gerenciamento de pessoas em API REST com Spring Boot , da [Digital Innovation One](https://digitalinnovation.one/).
+
+
 
 Foram implementados os métodos http GET, POST, PUT e DELETE.
 
